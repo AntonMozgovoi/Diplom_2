@@ -1,6 +1,6 @@
 import allure
 import requests
-from Urls import Urls
+from urls import Urls
 from api import UserApi
 from data import LoginUser, CreateUser
 from helper import DataHelper
@@ -12,7 +12,7 @@ class TestCreateUser:
     @allure.description('Успешная регистрация пользователя')
     def test_success_create_user(self):
         registration_request = UserApi.creation_user(DataHelper.generate_registration_body())
-        assert registration_request.status_code == 200
+        assert registration_request.status_code == 200 and registration_request.json()["success"] == True
 
     @allure.title('Поворная регистрация пользователя')
     @allure.description('Неуспешная регистрация пользователя с одинаковой почтой')

@@ -1,7 +1,8 @@
+import allure
 import requests
 from faker import Faker
 
-from Urls import Urls
+from urls import Urls
 from data import CreateUser, UpdateUser
 
 
@@ -11,6 +12,7 @@ class DataHelper:
         body = CreateUser.REGISTER_USER.copy()
         body[key] = value
         return body
+
 
     @staticmethod
     def generate_registration_body():

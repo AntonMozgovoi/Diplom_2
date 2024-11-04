@@ -1,6 +1,6 @@
 import allure
 import requests
-from Urls import Urls
+from urls import Urls
 from data import LoginUser
 from messages import ErrorMessage
 
@@ -11,7 +11,7 @@ class TestLoginUser:
     def test_success_login_user(self):
         login_body = LoginUser.LOGIN_USER
         create_request = requests.post(Urls.BASE_URL + Urls.LOGIN_USER, data=login_body)
-        assert create_request.status_code == 200
+        assert create_request.status_code == 200 and create_request.json()["success"] == True
 
     @allure.title('Авторизация незарегистрированного пользователя')
     @allure.description('Неуспешная авторизация незарегистрированного пользователя')
